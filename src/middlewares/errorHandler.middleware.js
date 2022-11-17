@@ -17,15 +17,16 @@ const errorHandler = (error, req, res, next) => {
 
     let result = {
         success: false,
+        code: errorData.code, 
         message: errorData.message
     };
-    
+
     if(process.env.MODE === 'dev'){
 
         result.error = error?.error;
 
     }
-
+    
     res.status(errorData.status).json(result);
 
 }
